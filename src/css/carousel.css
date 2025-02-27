@@ -1,0 +1,100 @@
+/* FOOD */
+
+.image-carousel {
+    display: flex;
+    justify-content: center;
+    width:95%; /* Rasm kengligini divga moslashtirish */
+    height: 90px; /* Proporsiyani saqlab qolish */
+  }
+
+  
+  
+  /* Styles for screens smaller than 768px (tablets and smaller devices) */
+  @media (max-width: 768px) {
+    .image-carousel {
+        display: flex;
+        justify-content: center;
+        width:95%; /* Rasm kengligini divga moslashtirish */
+        height: 70px; /* Proporsiyani saqlab qolish */
+      }
+      
+  }
+  
+  /* Styles for screens smaller than 576px (mobile devices) */
+  @media (max-width: 576px) {
+    .image-carousel {
+        display: flex;
+        justify-content: center;
+        width:95%; /* Rasm kengligini divga moslashtirish */
+        height:60px; /* Proporsiyani saqlab qolish */
+      }
+  }
+
+  /* BRAND */
+
+  .image-carousel-brand {
+    display: flex;
+    justify-content: end;
+    width:97%; /* Rasm kengligini divga moslashtirish */
+    height: 120px; /* Proporsiyani saqlab qolish */
+  }
+
+   /* Styles for screens smaller than 768px (tablets and smaller devices) */
+   @media (max-width: 768px) {
+    .image-carousel-brand {
+        display: flex;
+        justify-content: center;
+        width:97%; /* Rasm kengligini divga moslashtirish */
+        height: 80px; /* Proporsiyani saqlab qolish */
+      }
+      
+  }
+  
+  /* Styles for screens smaller than 576px (mobile devices) */
+  @media (max-width: 576px) {
+    .image-carousel-brand {
+        display: flex;
+        justify-content: center;
+        width:95%; /* Rasm kengligini divga moslashtirish */
+        height:70px; /* Proporsiyani saqlab qolish */
+      }
+  }
+
+
+
+  .container-favourite {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 4 ta teng ustun */
+    gap: 20px; /* Elementlar orasidagi masofa */
+    width: 100%;
+  }
+  
+  .favourite-image {
+    width: 100%; /* Rasm kengligini divga moslashtirish */
+    height: 90px; /* Proporsiyani saqlab qolish */
+  }
+  
+  /* Styles for screens smaller than 768px (tablets and smaller devices) */
+  @media (max-width: 768px) {
+    .container-favourite{
+      grid-template-columns: repeat(5, 1fr); /* 2 ta teng ustun */
+      gap: 15px; /* Elementlar orasidagi masofa */
+    }
+  
+    .favourite-image {
+      height: 70px; /* Proporsiyani saqlab qolish */
+    }
+  }
+  
+  /* Styles for screens smaller than 576px (mobile devices) */
+  @media (max-width: 576px) {
+    .container-favourite {
+      grid-template-columns: repeat(4, 1fr); /* 1 ta ustun */
+      gap: 10px; /* Elementlar orasidagi masofa */
+    }
+  
+    .favourite-image {
+      height: 60px; /* Proporsiyani saqlab qolish */
+    }
+  }
+

@@ -1,0 +1,183 @@
+.container-brand {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 ta teng ustun */
+    gap: 20px; /* Elementlar orasidagi masofa */
+    width: 100%;
+  }
+  
+  .item-image {
+    width: 100%; /* Rasm kengligini divga moslashtirish */
+    height: 160px; /* Proporsiyani saqlab qolish */
+  }
+  
+  /* Styles for screens smaller than 768px (tablets and smaller devices) */
+  @media (max-width: 768px) {
+    .container-brand {
+      grid-template-columns: repeat(2, 1fr); /* 2 ta teng ustun */
+      gap: 15px; /* Elementlar orasidagi masofa */
+    }
+  
+    .item-image {
+      height: 140px; /* Proporsiyani saqlab qolish */
+    }
+  }
+  
+  /* Styles for screens smaller than 576px (mobile devices) */
+  @media (max-width: 576px) {
+    .container-brand {
+      grid-template-columns: 1fr; /* 1 ta ustun */
+      gap: 10px; /* Elementlar orasidagi masofa */
+    }
+  
+    .item-image {
+      height: 160px; /* Proporsiyani saqlab qolish */
+    }
+  }
+
+  /* PRODUCT BRAND */
+
+  .container-product {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 4 ta teng ustun */
+    gap: 30px; /* Elementlar orasidagi masofa */
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .container-product {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 4 ta teng ustun */
+        gap: 20px; /* Elementlar orasidagi masofa */
+        width: 100%;
+      }
+  }
+  
+  /* Styles for screens smaller than 576px (mobile devices) */
+  @media (max-width: 576px) {
+    .container-product {
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+        width: 100%;
+      }
+  }
+
+  .container-search-brand {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 4 ta teng ustun */
+    gap: 20px; /* Elementlar orasidagi masofa */
+    width: 100%;
+  }
+
+/* FAVOURITE-BRAND */
+  .favourite-brand {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 4 ta teng ustun */
+    gap: 20px; /* Elementlar orasidagi masofa */
+    width: 100%;
+  }
+  
+  .favourite-image {
+    width: 100%; /* Rasm kengligini divga moslashtirish */
+    height: 100px; /* Proporsiyani saqlab qolish */
+  }
+  
+  /* Styles for screens smaller than 768px (tablets and smaller devices) */
+  @media (max-width: 768px) {
+    .favourite-brand {
+      grid-template-columns: repeat(3, 1fr); /* 2 ta teng ustun */
+      gap: 15px; /* Elementlar orasidagi masofa */
+      width: 95%;
+    }
+  
+    .favourite-image {
+      height: 140px; /* Proporsiyani saqlab qolish */
+    }
+  }
+
+  @media (max-width: 576px) {
+    .favourite-brand {
+      grid-template-columns: repeat(2, 1fr); /* 1 ta ustun */
+      gap: 10px; /* Elementlar orasidagi masofa */
+      width: 90%;
+    }
+  
+    .favourite-image {
+      height: 80px; /* Proporsiyani saqlab qolish */
+    }
+  }
+
+
+
+    /* PRODUCT BRAND */
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 ta teng ustun */
+      gap : 20px;
+      width: 100%;
+      height: 90px;
+    }
+  
+    @media (max-width: 768px) {
+      .container-product {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr); /* 4 ta teng ustun */
+          gap: 20px; /* Elementlar orasidagi masofa */
+          width: 100%;
+         
+        }
+    }
+    
+    /* Styles for screens smaller than 576px (mobile devices) */
+    @media (max-width: 576px) {
+      .container-product {
+          grid-template-columns: 1fr; 
+          gap: 10px; 
+          width: 100%;
+        }
+    }
+  
+    .container-search-brand {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 4 ta teng ustun */
+      gap: 20px; /* Elementlar orasidagi masofa */
+      width: 100%;
+    }
+
+
+    .container-create-form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px; /* Elementlar orasidagi masofa */
+      width: 100%;
+    }
+
+    .container-update-from {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 50px; /* Elementlar orasidagi masofa */
+      width:50%;
+    }
+  
+    .category-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* Allows items to move to the next row */
+      gap: 10px; /* Adds space between items */
+      width: 700px;
+     
+    }
+
+
+    .chart {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 4 ta teng ustun */
+      gap: 20px; /* Elementlar orasidagi masofa */
+      width: 100%;
+    }
+
+    .item-chart {
+      width: 100%; /* Rasm kengligini divga moslashtirish */
+      
+    }

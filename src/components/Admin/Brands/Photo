@@ -1,0 +1,46 @@
+{id && (          
+               <div className='flex flex-col items-center'>
+               {/* LOGO */}
+               <div className='md:ml-16 mb-5 flex-column'>
+                 {logoUrl ?
+                   <img className='rounded-full mb-3 object-cover w-[150px] ' src={`${baseURL}${logoUrl}`} alt="" />
+                   : <img className='flex justify-center ' width={130} src={require("../../../assets/imageicon.png")} />
+                 }
+                 <div className='flex justify-center'>
+                 <div className='main-bg p-2 flex rounded-md'>
+                    {!logoUrl ? (
+                      <button onClick={() => dispatch(showModalDouble())} className='mx-3 cursor-pointer font-semibold' 
+                      title='Add Logo'> <PlusCircle size={18} /></button>
+                    ) : (
+                      <>
+                      {/* <div onClick={() => dispatch(showModalDouble())} className='mx-3 cursor-pointer font-semibold'> <Edit size={18} /></div> */}
+                      <button onClick={() => deleteLogo()} className='mx-3 cursor-pointer font-semibold'> <Trash size={18} /></button>
+                      </>
+                    )}
+                   </div>
+                 </div>
+               </div>
+
+                {/* IMAGE */}
+                 <div className='md:ml-16 mb-2 flex-column'>
+                 {imageUrl ?
+                   <img className='rounded-t-[10px] object-cover w-[300px] mb-3' src={`${baseURL}${imageUrl}`} alt="" />
+                   : <img className='flex justify-center' width={200} src={require("../../../assets/imageicon.png")} />
+                 }
+                 <div className='flex justify-center items-center'>
+                   <div className='main-bg p-2 flex rounded-md'>
+                   {!imageUrl ? (
+                      <button onClick={() => dispatch(showModal())} className='mx-3 cursor-pointer font-semibold' title='Add Image'> <PlusCircle size={18} /></button>
+                    ) : (
+                      <>
+                      {/* <div onClick={() => dispatch(showModal())} className='mx-3 cursor-pointer font-semibold'> <Edit size={18} /></div> */}
+                      <button onClick={() => deleteFile()} className='mx-3 cursor-pointer font-semibold'> <Trash size={18} /></button>
+                      </>
+                    )}
+                   </div>
+                 </div>
+               </div>
+
+               </div>
+               
+                 )}
