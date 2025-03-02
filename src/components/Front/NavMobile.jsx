@@ -85,7 +85,7 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
                 <div className={`bar z-20`}>
                 </div>
               </div>
-              <a className='flex justify-center items-center mr-[-20px] mt-[-6px] no-underline text-[#000]'>
+              <a href="https://www.tezkor24.shop/"  className='flex justify-center items-center mr-[-20px] mt-[-6px] no-underline text-[#000]'>
                 <div> <img className='w-[45px]'
                   src={require("../../assets/logomain.png")} alt="logo" /></div>
                 <div className='font-bold mt-[3px] text-[20px]'>Tezkor 24</div>
