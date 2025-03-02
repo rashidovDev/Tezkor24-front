@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import { NavigationProvider } from './utils/navigation'
 import Home from './components/Admin/Home'
 import Order from './components/Admin/Orders/Order'
-import { AdminPrivateRoute, OwnerPrivateRoute, NavbarRoute } from './components/Admin/private'
+import { AdminPrivateRoute, OwnerPrivateRoute } from './components/Admin/private'
 import Admin from './components/Admin/Admins/Admin'
 import AdminAddUpdate from './components/Admin/Admins/AdminAddUpdate'
 import User from './components/Admin/Users/User'
@@ -16,9 +16,9 @@ import Customer from "./components/Admin/Customers/Customers"
 import CustomerAddUpdate from "./components/Admin/Customers/CustomersAddUpdate"
 import Login from "./Login"
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { LineWave, Oval } from 'react-loader-spinner'
+import { LineWave} from 'react-loader-spinner'
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from './components/Front/Navbar'
 import Header from './components/Front/Header'
@@ -33,7 +33,6 @@ import Courier from './components/Admin/Couriers/Courier'
 import CourierAddUpdate from './components/Admin/Couriers/CourierAddUpdate'
 import BrandProduct from './components/Admin/Brands/BrandProduct'
 import BrandProductAddUpdate from './components/Admin/Brands/BrandProductAddUpdate'
-import BrandStory from './components/Front/BrandStory'
 import { FavouriteBrandsPrivateRoute, OrderPrivateRoute, ProfilePrivateRoute, PurchasesPrivateRoute } from './components/Front/private'
 import FavouriteFood from './components/Admin/Favourite/FavouriteFood'
 import { hideBasket } from './store/slices/basketSlice'
@@ -44,11 +43,11 @@ import BasketNav from './components/Front/BasketNav'
 import Box from './components/Front/Box'
 import ShowNavbar from './components/Front/ShowNavbar'
 import { hideDeliver, hideFilter, hideLanguage } from './store/slices/toggleSlice'
-import Profile from './components/Front/Profile/Profile'
 import Offer from './components/Admin/Offer/Offer'
 import Category from './components/Admin/Category/Category'
+import { hideProfile } from './store/slices/userSlice'
 
-const App = ({location}) => {
+const App = () => {
 
   const [isOpen, setIsOpen] = useState(false)
   const loader = useSelector(state => state.loader.loader)
@@ -61,6 +60,7 @@ const App = ({location}) => {
       dispatch(hideBasket())
       dispatch(hideFilter())
       dispatch(hideDeliver())
+      dispatch(hideProfile())
     }} className='relative foot  wrapper'>
       <ToastContainer
         position="bottom-left"
@@ -106,16 +106,16 @@ const App = ({location}) => {
     
     <div className='main'>
     
-    <Basket/>
-    <BasketNav/>
-    <Box/>
+  
     {/* <NavProfile/> */}
     <ShowNavbar>
     <Navbar/>
     <NavMobile setIsOpen={setIsOpen} isOpen={isOpen}/>
+    <Box/>
+    <Basket/>
+    <BasketNav/>
     </ShowNavbar>
   
-   
     <NavSidebar setIsOpen={setIsOpen} isOpen={isOpen}/>
    
     {/* FRONT */}

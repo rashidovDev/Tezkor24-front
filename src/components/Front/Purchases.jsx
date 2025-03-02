@@ -35,11 +35,12 @@ const Purchases = () => {
     }, [page])
 
     return (
-        <div className=' relative md:h-[450px] w-[90%] mx-auto h-[450px] text-[10px]'>
+        <div className=' relative md:h-[450px] w-[90%] mx-auto h-[550px] text-[10px]'>
             {/* <NavLink to="/" className="no-underline w-[100px]  bg-[red]">
               <button className='flex items-center w-[100px] text-[#8E8E93]'><ChevronLeft size={17} /> <span className='mb-[1px]'>Back</span></button>
             </NavLink> */}
             {/* <h1 className='my-4'>Purchases</h1> */}
+            <h1 className='my-3 md:hidden'>Orders</h1>
             {
                Array.isArray(product) && product.length > 0 ? 
                 <div style={{ overflowX: 'auto' }} className='' >

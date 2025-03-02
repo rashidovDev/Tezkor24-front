@@ -19,16 +19,19 @@ const BasketNav = () => {
     const dispatch = useDispatch()
 
     
-  const order = () => {
-    checkToken()
+  const order = async () => {
     const token = localStorage.getItem("access_token")
-    if(!token){
+    let tokenTime = JSON.parse(localStorage.getItem('user_tokenTime'));
+    let differenceInHours = Math.floor((Date.now() - tokenTime) / (1000 * 60 * 60));
+    if (differenceInHours > 2 || !token) {
       dispatch(showModalRegistration()) 
-    }else{
+      dispatch(hideNavBasket()) 
+      } else {
         dispatch(hideNavBasket()) 
-      navigate("/order")
-    }
+        navigate("/order")
+      }
   }
+
     
     return (
         <div className={`md:hidden block fixed bottom-0 bg-[#fff] h-[600px] 

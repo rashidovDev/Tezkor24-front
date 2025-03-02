@@ -56,7 +56,7 @@ const handleCategory = (category) => {
   } }
   className='mr-3 flex md:px-3 px-1 md:py-2 py-1 justify-center items-center cursor-pointer 
   rounded-[15px] hover:bg-white transition-all duration-100 relative '>
-    <span className='mr-[1px]'><FaSort /></span>
+    <span className='mr-[1px] mt-[1px]'><FaSort /></span>
     <span className='select-none text-[14px]
     md:text-[18px] md:font-normal font-semibold'
     >Sorting</span>

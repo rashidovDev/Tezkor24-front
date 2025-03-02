@@ -1,27 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { ChevronLeft, Delete, Star, Trash2, Truck } from 'react-feather'
-import { FaBookmark, FaRegBookmark } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
+import { ChevronLeft, Trash2} from 'react-feather'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { checkToken, PUT } from '../../../../api/frontApi'
 
 const FavouriteBrands = () => {
     const [brand, setBrand] = useState()
-    const [user, setUser] = useState()
-    let currentUser;
-
-     const navigate = useNavigate()
-      const dispatch = useDispatch()
-
     const url = process.env.REACT_APP_SERVER_API;
+    const urlImage = process.env.REACT_APP_IMAGE;
 
-  async function getUser() {
-    currentUser = JSON.parse(localStorage.getItem("user"))
-    if (currentUser) {
-      setUser(currentUser.data.user)
-    }
-  }
 
   const removeLikes = async (id) => {
     await checkToken()
@@ -42,7 +29,6 @@ const FavouriteBrands = () => {
 
     useEffect(() => {
         getFavouriteBrands()
-        getUser()
     }, [])
 
 
@@ -57,7 +43,7 @@ const FavouriteBrands = () => {
 
     {
         
-            <div className={`${brand && 'favourite-brand'}  mx-auto`}>
+            <div className={`${brand?.length > 0 && 'favourite-brand'}  mx-auto`}>
               {
                 Array.isArray(brand) && brand.length > 0 ? brand.map((item, idx) => {
                   return (
@@ -80,7 +66,7 @@ const FavouriteBrands = () => {
                         <div>
                           <div className='relative '>
                             <img className='brightness-[0.95] favourite-image z-0 object-cover rounded-[20px] opacity-[1] hover:opacity-[0.8]'
-                              src={`http://localhost:5500/${item.image}`} alt="" />
+                              src={`${urlImage}${item.image}`} alt="" />
                             {/* {item.logo && <img className='absolute top-[10px] right-[10px] cursor-pointer rounded-t-[20px] w-[60px]'
                          src={`https://tezkor24.onrender.com/${item.logo}`} alt="" />}   */}
                           </div>
@@ -97,8 +83,9 @@ const FavouriteBrands = () => {
                     </div>
 
                   )
-                }) :<div className='flex justify-center items-center w-[95%] mx-auto h-[350px]'>
+                }) :<div className='flex justify-center items-center w-[95%] mx-auto h-[350px] relative'>
                 <div className='md:text-[28px] text-[24px] text-center'>You have no favourite restaurants</div>
+
               </div>
               }
             </div>

@@ -74,10 +74,10 @@ const NavSidebar = ({setIsOpen, isOpen}) => {
         </div>
         </div> */}
       
-      <NavLink onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px]'>Home</NavLink>
-      <NavLink onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px]'>About Us</NavLink>
-      <NavLink onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px]'>Restaurants</NavLink>
-      <NavLink onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px]'>Back</NavLink>
+      <NavLink to={"/"} onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px] text-[#fff]'>Home</NavLink>
+      <NavLink to={"/about"} onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px] text-[#fff]'>About Us</NavLink>
+      <NavLink to={"/"} onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px] text-[#fff]'>Restaurants</NavLink>
+      <NavLink to={"/"} onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px] text-[#fff]'>Back</NavLink>
       <div className='flex items-center absolute bottom-10'>
             <a ><Instagram className="mr-2" color='#fff' size={20} /></a>
             <a><BiLogoTelegram size={20} className='mr-1' color='#fff'/></a>

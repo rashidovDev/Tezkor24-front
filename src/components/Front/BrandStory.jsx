@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ArrowLeft, ChevronLeft, Heart, Minus, Plus, PlusCircle, Search } from 'react-feather'
+import {  ChevronLeft, Minus, Plus,  Search } from 'react-feather'
 import { BsInfoLg } from "react-icons/bs";
 import { Link } from "react-scroll"
 import { NavLink, useParams } from 'react-router-dom'
@@ -9,11 +9,9 @@ import Skeleton from '../Skeleton/Skeleton';
 import "../Skeleton/skeleton.css"
 import ModalProduct from '../Modal/ModalProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import { hideModalProduct, showModal, showModalExactBrand, showModalProduct, showModalRegistration } from '../../store/slices/modalSlice';
-import { addItemToCart, hideBasket, removeItemFromCart, setBrandID, setProductID, showBasket } from '../../store/slices/basketSlice';
+import { hideModalProduct, showModalExactBrand, showModalProduct, showModalRegistration } from '../../store/slices/modalSlice';
+import { addItemToCart, removeItemFromCart, setBrandID, setProductID, showBasket } from '../../store/slices/basketSlice';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { Modal } from '@mui/material';
-import ModalCustom from '../Modal/ModalCustom';
 
 const BrandStory = () => {
   const { id } = useParams()
@@ -51,24 +49,27 @@ const BrandStory = () => {
   }
 
   const doLikes = async (id) => {
-    const user = JSON.parse(localStorage.getItem("user"))
-    if (user) {
-      const response = await PUT('/brand/update-likes/' + id)
-      getBrand()
+    const token = localStorage.getItem("access_token")
+    let tokenTime = JSON.parse(localStorage.getItem('user_tokenTime'));
+    let differenceInHours = Math.floor((Date.now() - tokenTime) / (1000 * 60 * 60));
+    if (differenceInHours > 2 || !token) {
+      dispatch(showModalRegistration())  
     } else {
-      dispatch(showModalRegistration())
-      dispatch(hideBasket())
+      await PUT('/brand/update-likes/' + id)
+      getBrand()
     }
   }
 
   const removeLikes = async (id) => {
-    const user = JSON.parse(localStorage.getItem("user"))
-    if (user) {
-      const response = await PUT('/brand/remove-likes/' + id)
-      getBrand()
-    } else {
+    const token = localStorage.getItem("access_token")
+    let tokenTime = JSON.parse(localStorage.getItem('user_tokenTime'));
+    let differenceInHours = Math.floor((Date.now() - tokenTime) / (1000 * 60 * 60));
+    if (differenceInHours > 2 || !token) {
       dispatch(showModalRegistration())
-      dispatch(hideBasket())
+    } else {
+  
+      await PUT('/brand/remove-likes/' + id)
+      getBrand()
     }
   }
 
@@ -106,11 +107,14 @@ const BrandStory = () => {
      
       <ModalProduct>
         <div className='p-1 md:w-[400px] w-[320px]'>
-          <div className='relative bg-[#fff]'>
-            <img className='w-full md:h-[194px] h-[170px]   rounded-[10px] object-cover' src={`${url}${selectedProduct.image}`} alt="" />
+          <div className='relative bg-[#fff] flex justify-center flex-col items-center'>
+            <img className='w-[60%]   rounded-[10px] object-cover' src={`${url}${selectedProduct.image}`} alt="" />
             {/* <img className='w-[70px] absolute top-1 right-1' src={`${url}/${brand.logo}`} alt="" /> */}
-            <div className='md:text-[30px] text-[24px] font-bold'>{selectedProduct.name}</div>
-            <p className='text-[#848484] md:w-[400px] text-[12px] md:text-[16px] w-full py-1 '>{selectedProduct.description}</p>
+           
+          </div>
+          <div>
+          <div className='md:text-[30px] text-[24px] font-bold'>{selectedProduct.name}</div>
+          <p className='text-[#848484] md:w-[400px] text-[12px] md:text-[16px] w-full py-1 '>{selectedProduct.description}</p>
           </div>
           <div className='flex justify-between items-center'>
             <div className='flex items-center'>
@@ -160,7 +164,7 @@ const BrandStory = () => {
                         <div className='flex items-center text-[16px]'>
                           <div className='md:py-1 px-2 bg-[#F4F3FB] mx-[6px] rounded-[15px] flex items-center'>
                             <img className='w-[14px] h-[14px] mr-1' src={require("../../assets/newstar.png")} alt="" />
-                            <span className='text-[13px] md:text-[16px]'>4.7</span>
+                            <span className='text-[13px] md:text-[16px]'>{brand.rating}</span>
                           </div>
                           <div className='md:py-1  px-2 bg-[#F4F3FB] text-[13px] mx-1 rounded-[16px] md:text-[16px]'>Delivery time &#xb7; {brand.deliveryTime} min</div>
                           {
@@ -303,14 +307,14 @@ const BrandStory = () => {
                                       if (prod.category === cat) {
                                         return (
                                           < >
-                                            <div key={prod} className='hidden md:block bg-[#f2f2f2] 
+                                            <div key={prod} className='hidden md:block bg-[#F3F1EE] 
                                              shadow my-4 p-2 rounded-[10px] relative '>
                                               <div className='relative w-[90%] mx-auto'>
-                                                <img className=' object-cover w-full h-[159px] rounded-[10px]' src={`${url}/${prod.image}`} alt="" />
+                                                <img className=' object-cover w-full h-[169px] rounded-[10px]' src={`${url}/${prod.image}`} alt="" />
                                                 {/* <img className='w-[60px] absolute top-1 right-1' src={`${url}/${brand.logo}`} alt="" /> */}
                                                 
                                               </div>
-                                              <h5 className='py-2 px-1 text-[22px]'>{prod.name.slice(0, 15)}</h5>
+                                              <h5 className='py-2 px-1 text-[22px]'>{prod.name.slice(0, 20)}</h5>
                                               {
                                                 productID && productID.includes(prod._id) ?
                                                   orders &&
@@ -356,8 +360,8 @@ const BrandStory = () => {
                                             <div className='md:hidden block shadow-brand my-3 p-3 rounded-md'>
                                               <div className='flex h-[150px]'>
                                                 <div className='pl-2 relative w-[50%]'>
-                                                  <h3 className=''>{prod.name.slice(0, 15)}</h3>
-                                                  <p className='w-full text-slate-500 text-[16px]'>{prod.description.slice(0, 40)}</p>
+                                                  <p className='text-[20px] font-semibold'>{prod.name.slice(0, 15)}</p> 
+                                                  <p className='w-full text-slate-500 text-[12px]'>{prod.description.slice(0, 60)}</p>
                                                   <div className='font-bold text-[#F29314] absolute bottom-0 text-[20px]'>
                                                     {prod.price}{`\t`}sum
                                                   </div>
@@ -392,11 +396,15 @@ const BrandStory = () => {
                                                       )
                                                       :
                                                       <button
-                                                        onClick={() => {
-
-                                                          setSelectedProduct(prod)
-                                                          dispatch(showModalProduct())
-                                                        }}
+                                                      onClick={() => {
+                                                      
+                                                        if (!brandID || brandID === prod.brandID) {
+                                                          setSelectedProduct(prod);
+                                                          dispatch(showModalProduct());
+                                                        } else {
+                                                          dispatch(showModalExactBrand());
+                                                        }
+                                                      }}
                                                         className='main-bg w-full mt-[20px] p-1 rounded-lg'>Add</button>
                                                   }
 

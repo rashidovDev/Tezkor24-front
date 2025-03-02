@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { checkToken, GETBRAND, PUT } from '../../api/frontApi'
-import { Heart, Star, Truck } from 'react-feather'
+import {  GETBRAND, PUT } from '../../api/frontApi'
+import { Star, Truck } from 'react-feather'
 import { NavLink, useNavigate } from 'react-router-dom'
-import { FaHeart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
 import { showModalRegistration } from '../../store/slices/modalSlice';
-import { hideBasket } from '../../store/slices/basketSlice';
 import Skeleton from '../Skeleton/Skeleton';
 import { FaRegBookmark } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa";
@@ -15,8 +12,6 @@ const Brand = ({category}) => {
 
   const [brand, setBrand] = useState([])
   const [user, setUser] = useState()
-  const [totalItem, setTotalItem] = useState('')
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const url = process.env.REACT_APP_IMAGE;
 
@@ -36,28 +31,30 @@ const Brand = ({category}) => {
   }
 
   const doLikes = async (id) => {
-    await checkToken()
-    const user = JSON.parse(localStorage.getItem("user"))
-    if (user) {
+    const token = localStorage.getItem("access_token")
+    let tokenTime = JSON.parse(localStorage.getItem('user_tokenTime'));
+    let differenceInHours = Math.floor((Date.now() - tokenTime) / (1000 * 60 * 60));
+    if (differenceInHours > 2 || !token) {
+      dispatch(showModalRegistration())  
+    } else {
       await PUT('/brand/update-likes/' + id)
       getBrands()
-    } else {
-      dispatch(showModalRegistration())
-      dispatch(hideBasket())
     }
   }
 
   const removeLikes = async (id) => {
-    await checkToken()
-    const user = JSON.parse(localStorage.getItem("user"))
-    if (user) {
-     await PUT('/brand/remove-likes/' + id)
-      getBrands()
-    } else {
+    const token = localStorage.getItem("access_token")
+    let tokenTime = JSON.parse(localStorage.getItem('user_tokenTime'));
+    let differenceInHours = Math.floor((Date.now() - tokenTime) / (1000 * 60 * 60));
+    if (differenceInHours > 2 || !token) {
       dispatch(showModalRegistration())
-      dispatch(hideBasket())
+    } else {
+  
+      await PUT('/brand/remove-likes/' + id)
+      getBrands()
     }
   }
+
 
   function getData() {
     getUser()

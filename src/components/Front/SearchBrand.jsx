@@ -11,8 +11,10 @@ const SearchBrand = () => {
 
   const getSearchItems = async () => {
     const response = await GET(`/front/product-brand?search=` + search)
+    console.log(response)
     setProducts(response.filteredProducts)
     setBrands(response.filteredBrands)
+    console.log(products)
   }
 
   const url = process.env.REACT_APP_IMAGE
@@ -37,15 +39,15 @@ const SearchBrand = () => {
       {/* // Restaurants  */}
       {  selected === 'restaurants' &&
         <div className='my-3  overflow-auto'>
-          <h1>Restaurants</h1>
-          <div className='container-search-brand'>
+          <h1 className='my-2'>Restaurants</h1>
+          <div className={`${brands?.length > 0 && `container-search-brand`} `}>
           { 
             Array.isArray(brands) && brands.length > 0 ? brands.map((brand, idx) => {
               return (
                 <NavLink key={idx + 1} to={`/brand/` + brand._id} className='mt-2 no-underline text-[#000]'>
                   <div className='border border-[#F6F6FB] rounded-[20px] cursor-pointer my-3'>
                     <div className='flex items-center p-3'>
-                      <img className='w-1/2 h-[80px] rounded-[10px] mr-2 object-cover' src={`${url}/${brand.image}`} alt="" />
+                      <img className='w-1/2 h-[120px] rounded-[10px] mr-2 object-cover' src={`${url}/${brand.image}`} alt="" />
                       <div className='ml-2 lg:text-[25px] md:text-[20px] text-[16px] font-semibold'>{brand.name}</div>
                     </div>
                   </div>
@@ -53,8 +55,8 @@ const SearchBrand = () => {
               )
             })
               :
-              <div className='flex justify-center items-center '>
-              <p className='text-[40px]'>Nothing was found</p>  
+              <div className='flex  w-full justify-center items-center h-[300px]'>
+              <p className='md:text-[40px] text-[32px]'>Nothing was found</p>  
               </div>
           }
           </div>
@@ -67,19 +69,19 @@ const SearchBrand = () => {
       {
         selected === 'products' &&
         <div className={`my-3 }`}>
-          <h1>Products</h1>
+          <h1 className='my-2'>Products</h1>
           {
-            Array.isArray(products) && products.length > 0  ?  
+            Array.isArray(products) && products?.length > 0  ?  
               <div className='border border-[#F6F6FB] p-[28px] rounded-[20px] cursor-pointer my-3'>
-                <div className='raw mb-[150px]'>
+                <div className={`${products?.length > 0 && `container-search-product`} `}>
                   {products.map((item, idx) => {
                     return (
-                      <div key={idx + 1} className='md:w-[23%] md:float-left bg-[#f2f2f2] p-2 mr-[22px] rounded-md relative mb-3'>
-                        <img className='md:w-[250px] w-full object-cover h-[159px] rounded-[10px] ' src={`${url}/${item.image}`} alt="" />
-                        <img className='w-[50px] object-cover rounded-[10px] absolute top-[10px] right-[10px]' src={`${url}/${item.brandID.logo}`} alt="" />
+                      <div key={idx + 1} className=' bg-[#f2f2f2] p-2 mr-[22px] rounded-md relative mb-3'>
+                        <img className=' w-full object-cover h-[159px] rounded-[10px] ' src={`${url}/${item.image}`} alt="" />
+                        {/* <img className='w-[50px] object-cover rounded-[10px] absolute top-[10px] right-[10px]' src={`${url}/${item.brandID?.logo}`} alt="" /> */}
                         <p className='my-2 text-[20px]'>{item.name}</p>
                        
-                        <NavLink to={`/brand/` + item.brandID._id} className='no-underline text-[#fff]'> <div className=' w-full main-bg py-[2px] mt-3 rounded-md text-center'> {item.price} </div></NavLink>
+                        <NavLink to={`/brand/` + item?.brandID?._id} className='no-underline text-[#fff]'> <div className=' w-full main-bg py-[2px] mt-3 rounded-md text-center'> Got to restaurant </div></NavLink>
                        
                       </div>
                     )
@@ -87,8 +89,8 @@ const SearchBrand = () => {
                 </div>
               </div>
               :
-              <div className='flex justify-center items-center md:my-[220px]'>
-              <p className='text-[40px]'>Nothing was found</p>  
+              <div className='flex justify-center items-center md:my-[220px] h-[300px]'>
+              <p className='md:text-[40px] text-[32px]'>Nothing was found</p>  
               </div>
           }
         </div>

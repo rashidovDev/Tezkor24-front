@@ -139,10 +139,38 @@
   
     .container-search-brand {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 4 ta teng ustun */
+      grid-template-columns: repeat(3, 1fr); /* 4 ta teng ustun */
       gap: 20px; /* Elementlar orasidagi masofa */
       width: 100%;
     }
+
+    @media (max-width: 576px) {
+      .container-search-brand {
+          grid-template-columns: 1fr; 
+          gap: 10px; 
+          width: 100%;
+        }
+
+       
+    }
+
+
+   
+    .container-search-product {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 4 ta teng ustun */
+      gap: 20px; /* Elementlar orasidagi masofa */
+      width: 100%;
+    }
+
+    @media (max-width: 576px) {
+      .container-search-product  {
+        grid-template-columns: 1fr; 
+        gap: 10px; 
+        width: 100%;
+      }
+      }
+
 
 
     .container-create-form {

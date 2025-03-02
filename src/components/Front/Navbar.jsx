@@ -5,8 +5,6 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { logoutUser } from '../../store/slices/userSlice';
 import { showModalRegistration } from '../../store/slices/modalSlice';
 import ModalRegistration from '../Modal/ModalRegistration';
-import { toast } from 'react-toastify';
-import { checkToken, ErrHandler } from '../../api/frontApi';
 import { showDeliver, showLanguage } from '../../store/slices/toggleSlice';
 import { motion } from "framer-motion"
 
@@ -17,7 +15,7 @@ const Navbar = () => {
   const [user, setUser] = useState()
   const [profile, setProfile] = useState(false)
   const [searchError, setSearchError] = useState(false)
-  const [deliverAddress, setDeliverAddress] = useState(false)
+
 
   const languageIsVisible = useSelector(state => state.toggle.languageIsVisible)
   const deliverIsVisible = useSelector(state => state.toggle.deliverIsVisible)
@@ -55,15 +53,6 @@ const Navbar = () => {
       } else {
         navigate("/profile")
       }
-  }
-
-
-
-  async function logout() {
-    dispatch(logoutUser())
-    setUser('')
-    setProfile(false)
-    navigate("/")
   }
 
   return (

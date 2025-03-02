@@ -8,9 +8,10 @@ import FavouriteBrands from "./Profile/ProfileCategories/FavouriteBrands"
 
 export const OrderPrivateRoute = () => {
     const orders = useSelector(state => state.basket.items)
+    let token = localStorage.getItem("access_token")
     // let token =  JSON.parse(JSON.stringify(localStorage.getItem("access_token"))) || null
     return (
-      orders.length > 0 ? <Order/> : <Navigate to="/user/login" />
+     token && orders.length > 0 ? <Order/> : <Navigate to="/user/login" />
     )
 }
 

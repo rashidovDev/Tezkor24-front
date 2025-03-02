@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart, clearBasket, removeItemFromCart, setOrder } from '../../store/slices/basketSlice';
 import { Minus, Plus } from 'react-feather';
-import { GET, PGET, POST } from '../../api/frontApi';
+import { PGET, POST } from '../../api/frontApi';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import { hideModal, showModal } from '../../store/slices/modalSlice';
@@ -56,10 +56,6 @@ const Order = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   // Function to handle checkbox change
-  const handleCheckboxChange = () => {
-    // Toggle the checkbox value
-    setIsChecked(!isChecked);
-  };
 
 
 
@@ -99,7 +95,7 @@ dispatch(clearBasket())
 
 </Modal>
 
-<div className='md:mt-[50px] mt-[10px]  h-max w-[95%] md:w-[90%] mb-10 mx-auto'>
+<div className='md:mt-[50px] mt-[10px]  h-max  w-[95%] mb-10 mx-auto'>
   <h1>Order</h1>
   <div className='mb-[20px]'>
     <div className='md:flex  '>
