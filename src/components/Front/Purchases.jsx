@@ -80,7 +80,7 @@ const Purchases = () => {
                 </TableContainer>
             </div>
                 :
-                <div>You have no purchases yet</div>
+                <div className='text-[20px] text-center h-[350px] flex justify-center items-center'>You have no purchases yet</div>
             }
            
             <div className='absolute bottom-0 right-0'>
