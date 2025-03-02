@@ -65,7 +65,7 @@ const Navbar = () => {
           {/* LEFT SIDE */}
           <div className='flex items-center'>
             <div className=''>
-              <a href="https://tezkor24.vercel.app" className='flex items-center ml-2 no-underline'>
+              <a href="https://www.tezkor24.shop/" className='flex items-center ml-2 no-underline'>
                 <img className='w-[50px] h-[42px] ' src={require('../../assets/logomain.png')} alt='logo' />
                 <h4 className='mb-[10px] font-bold text-[24px] pt-[14px] ml-1 text-[#000]'>Tezkor24</h4>
               </a>
