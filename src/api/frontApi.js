@@ -69,6 +69,7 @@ export async function GET(URL) {
     }
 }
 
+
 export async function PGET(URL) {
     try{
     store.dispatch(showLoader())

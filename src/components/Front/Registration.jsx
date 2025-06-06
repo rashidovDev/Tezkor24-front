@@ -25,7 +25,7 @@ const Registration = () => {
     country: '',
     region : ''
   });
-  const baseURL = "http://localhost:5000/api"
+const baseURL = process.env.REACT_APP_SERVER_API;
   const [country, setCountry] = useState('')
   const [region, setRegion] = useState('')
   const [selectedCountry, setSelectedCountry] = useState('Afghanistan')

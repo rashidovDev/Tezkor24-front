@@ -26,6 +26,8 @@ const Admin = () => {
     setPageCount(Math.ceil(response.totalItems/perPage))
 }
 
+console.log("user", user)
+
   const handlePageClick = (selectedPage) => {
     setPage(selectedPage.selected + 1);
   };
@@ -80,6 +82,7 @@ async function deleteItem(id) {
               <th className="text-center">#</th>
                 <th className="text-center">Name</th>
                 <th className="text-center">Email</th>
+                <th className="text-center">Registration date</th>
                 <th className="text-center">Phone Number</th>
               </tr>
             </thead>
@@ -92,7 +95,8 @@ async function deleteItem(id) {
                      <td className="text-center">{page == 0 ? (item + 1) : startIndex + item + 1}</td>
                      <td className="text-center">{idx?.name}</td>
                     <td className="text-center">{idx.email}</td>
-                    
+                     <td className="text-center">{`${idx.dateRegistered.day}/${idx.dateRegistered.month}/${idx.dateRegistered.year} \t
+                  ${idx.dateRegistered.hours.hour}:${idx.dateRegistered.hours.minutes}`} </td>
                     <td className="text-center">{idx?.phoneNumber}</td>
                    
                  

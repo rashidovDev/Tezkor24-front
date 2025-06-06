@@ -368,7 +368,7 @@ const BrandStory = () => {
                                                 </div>
                                                 <div className='w-[50%] relative'>
                                                   <div className='relative'>
-                                                    <img className='w-[180px] object-cover h-[99px] rounded-[10px]' src={`${url}/${prod.image}`} alt="" />
+                                                    <img className='w-[180px] object-cover h-[99px] rounded-[10px]' src={`${url}/${prod.image}`} alt="productIimage" />
                                                     {/* <img className='w-[50px] absolute top-1 right-1' src={`${url}/${brand.logo}`} alt="" /> */}
                                                   </div>
                                                   { 

@@ -15,8 +15,9 @@ const Brand = ({category}) => {
   const dispatch = useDispatch()
   const url = process.env.REACT_APP_IMAGE;
 
+  console.log("wdwd",brand)
+  
   let currentUser;
-
 
   async function getUser() {
     currentUser = JSON.parse(localStorage.getItem("user"))
@@ -124,8 +125,7 @@ const Brand = ({category}) => {
                                    cursor-pointer flex items-center '>
                                   <span className=''><Star color='#000' width={14} /></span>
                                   <span className='text-[12px] my-[2px]  text-[#7A7A7A]'>{item.rating}</span>
-                                </div>
-                                
+                                </div>        
                                
                               </div>
 
@@ -147,9 +147,7 @@ const Brand = ({category}) => {
               }
             </div>
           ) :
-            <div className='container-brand'>
-             
-             
+            <div className='container-brand'>         
               <Skeleton type='h-[180px] rounded-[15px]' />
               <Skeleton type='h-[180px] rounded-[15px]' />
               <Skeleton type='h-[180px] rounded-[15px]' />

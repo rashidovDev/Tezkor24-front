@@ -26,8 +26,9 @@ const ModalRegistration = (props) => {
 
 
   async function createUser(data) {
-    await checkToken()
+    // await checkToken()
     const response = await SIGNUP('/auth/registration-user', data)
+    console.log("response", response)
     if(response){
       const response = await login(data)
       if(response){  

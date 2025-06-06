@@ -83,10 +83,11 @@ const FavouriteBrands = () => {
                     </div>
 
                   )
-                }) :<div className='flex justify-center items-center w-[95%] mx-auto h-[350px] relative'>
-                <div className='md:text-[28px] text-[24px] text-center'>You have no favourite restaurants</div>
+                }) : <div className=' flex justify-center items-center h-[350px]'>
+    <div className='text-[28px]'>You have no favourite restaurant</div>
+  </div>
 
-              </div>
+            
               }
             </div>
         
