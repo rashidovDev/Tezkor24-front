@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { showModalRegistration} from '../../store/slices/modalSlice';
 import NavProfile from './NavProfile';
 import { showProfile } from '../../store/slices/userSlice';
+import useTranslation from '../../hooks/useTranslation';
 
 
 const NavMobile = ({ setIsOpen, isOpen }) => {
@@ -13,6 +14,7 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
   const [searchError, setSearchError] = useState(false)
   let currentUser;
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   async function getUser() {
     currentUser = JSON.parse(localStorage.getItem("user"))
@@ -97,7 +99,7 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
               }}
               className='w-[65px] h-[35px] rounded-[15px] bg-[#F3F1EE] text-center text-[14px]
               flex justify-center items-center cursor-pointer'>
-                Profile
+                {t('profile')}
               </div>
             </div>
             <div className='relative w-[95%] mx-auto flex justify-center'>
@@ -106,7 +108,7 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
                 <div className='w-[75%]'>
                   <input
                 
-                   value={search} onChange={(e) => setSearch(e.target.value)} name='search' autoComplete='off' type="text" placeholder='Search food or restaurant'
+                   value={search} onChange={(e) => setSearch(e.target.value)} name='search' autoComplete='off' type="text" placeholder={t('searchPlaceholderMobile')}
                     className=" rounded-[12px] py-[10px] w-full px-[15px] border border-[#E4E4E7] outline-none " />
                 </div>
                 <div className='w-[25%]'>
@@ -115,7 +117,7 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
                        onClick={() => errorHandler()}
                        disabled={!search || search.length < 3}
                     className='ml-2 py-[10px] px-[12px] text-[#fff] text-center cursor-pointer font-bold rounded-[12px] main-bg'>
-                    Search  </div></NavLink>
+                    {t('searchButton')}  </div></NavLink>
                 </div>
 
               </div>

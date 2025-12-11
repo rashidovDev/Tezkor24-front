@@ -234,18 +234,9 @@ const ProductAddUpdate = () => {
 
           <div className="w-full flex justify-start items-center">
             <label htmlFor="name" className='w-[25%] flex justify-end'>Delivery Fee</label>
-            <select autoComplete="off" {...register("deliveryFee", { required: true })}
-              id='deliveryFee' type="text" placeholder='Delivery Fee'
-              className='placeholder:text-[12px] border w-[75%] ml-1 border-sky-500 
-              p-1 h-[30px] outline-[#F29314]  text-[12px]'>{
-               
-                deliveryDiscounts.map((item, idx) => {
-                  return (
-                    <option key={idx + 1} value={item}>{item}</option>
-                  )
-                })
-              }
-            </select>
+                       <input autoComplete="off" {...register("deliveryFee", { required: true })}
+              id='deliveryFee' type="number" placeholder="For example '20-30'"
+              className='placeholder:text-[12px] border w-[75%] ml-1 border-sky-500 p-1 h-[30px] outline-[#F29314]  text-[12px]' />
             {errors.deliveryFee?.type === 'required' && <div className='text-danger mt-2'>Required field</div>}
             {/* <input autoComplete="off" {...register("city", { required: true })} 
               id='name' type="text" placeholder='City' 
@@ -256,7 +247,7 @@ const ProductAddUpdate = () => {
           <div className="w-full flex justify-start items-center">
             <label htmlFor="name" className='w-[25%] flex justify-end'>Discount</label>
             <input autoComplete="off" {...register("discount", { required: true })}
-              id='discount' type="text" placeholder='33%'
+              id='discount' type="number" placeholder='33%'
               className='placeholder:text-[12px] border w-[75%] ml-1 border-sky-500 p-1 h-[30px] outline-[#F29314]  text-[12px]' />
             {errors.description?.type === 'required' && <div className='text-danger mt-2'>Required field</div>}
           </div>
@@ -356,7 +347,7 @@ const ProductAddUpdate = () => {
             </div>   
            
             </div>   
-            <div className=' pt-[5px] text-[#848484] w-full flex items-center justify-between'>
+            {/* <div className=' pt-[5px] text-[#848484] w-full flex items-center justify-between'>
                               <div className='text-[#218A0A] w-[50%] bg-[#E7F2E4] px-[8px] py-2 
                               text-center rounded-[15px] text-[16px] '>{brand.deliveryFee ? "Free delivery" : "No Free delivery"}</div>
                                <div 
@@ -376,7 +367,7 @@ const ProductAddUpdate = () => {
                     
                  
                 </div>
-                            </div>   
+                            </div>    */}
           </div>
           </div>
         }

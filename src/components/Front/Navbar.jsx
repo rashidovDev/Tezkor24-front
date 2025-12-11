@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Globe, Navigation, Search, User } from 'react-feather'
+import { Globe, Navigation, Search } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, NavLink } from "react-router-dom";
-import { logoutUser } from '../../store/slices/userSlice';
 import { showModalRegistration } from '../../store/slices/modalSlice';
 import ModalRegistration from '../Modal/ModalRegistration';
-import { showDeliver, showLanguage } from '../../store/slices/toggleSlice';
+import { showDeliver, showLanguage, hideLanguage } from '../../store/slices/toggleSlice';
 import { motion } from "framer-motion"
+import { setLanguage } from '../../store/slices/languageSlice';
+import useTranslation from '../../hooks/useTranslation';
+import { supportedLanguages } from '../../locales/translations';
 
 
 const Navbar = () => {
@@ -15,6 +17,7 @@ const Navbar = () => {
   const [user, setUser] = useState()
   const [profile, setProfile] = useState(false)
   const [searchError, setSearchError] = useState(false)
+  const { t, currentLanguage } = useTranslation()
 
 
   const languageIsVisible = useSelector(state => state.toggle.languageIsVisible)
@@ -35,6 +38,8 @@ const Navbar = () => {
   }, [])
 
   const dispatch = useDispatch()
+  const selectedLanguage = supportedLanguages.find((lang) => lang.code === currentLanguage)
+
   const errorHandler = () => {
     if (search.length < 3) {
       setSearchError(true)
@@ -53,6 +58,11 @@ const Navbar = () => {
       } else {
         navigate("/profile")
       }
+  }
+
+  const handleLanguageSelect = (code) => {
+    dispatch(setLanguage(code))
+    dispatch(hideLanguage())
   }
 
   return (
@@ -76,7 +86,7 @@ const Navbar = () => {
               <div className='absolute bottom-[10px] left-[8px] text-[#777] '><Search className="" size={20} /></div>
               <div>
                 <input value={search} onChange={(e) => setSearch(e.target.value)} name='search' autoComplete='off'
-                  type="text" placeholder='Search for restaurants, foods, beverages...'
+                  type="text" placeholder={t('searchPlaceholderDesktop')}
                   className=" border-[2px] border-[#F29314] w-[380px] outline-none
                   h-[42px] pl-[35px] pr-[25px] py-2 rounded-l-[15px]" />
 
@@ -84,15 +94,15 @@ const Navbar = () => {
                   <button
                     onClick={() => errorHandler()}
                     disabled={!search || search.length < 3}
-                    className='w-[90px] h-[42px] main-bg rounded-r-[15px] text-center cursor-pointer'>Search</button>
+                    className='w-[90px] h-[42px] main-bg rounded-r-[15px] text-center cursor-pointer'>{t('searchButton')}</button>
                 </NavLink>
               </div>
               <div onClick={(e) => {
                 e.stopPropagation()
                 dispatch(showDeliver())}} className='ml-5 relative '>
-                <div className='absolute top-[9px] left-[18px]'><Navigation  width={18} color='white' /></div>
+                <div className='absolute top-[9px] left-1 '><Navigation  width={18} color='white' /></div>
                 <button
-                  className='w-[240px] h-[42px] main-bg rounded-[15px] pl-3 '>Enter delivery address</button>
+                  className='px-4 text-center h-[42px] main-bg rounded-[15px] pl-3 '>{t('enterAddress')}</button>
 {
   deliverIsVisible &&
   <motion.div
@@ -104,7 +114,7 @@ const Navbar = () => {
      className='flex-col w-[350px] justify-center absolute top-[50px] 
     items-center shadow-carousel-language py-4 px-4 rounded-[15px] bg-white'>
       <div className=' text-[24px]
-       text-center  py-2 my-2 '>We will provide location feature soon😊</div>
+       text-center  py-2 my-2 '>{t('locationComingSoon')}</div>
     </motion.div>
 }
                   
@@ -116,14 +126,14 @@ const Navbar = () => {
 
 
           {/* RIGHT SIDE */}
-          <div className='flex items-center w-[170px] justify-between'>
-            <div className='relative'>
+          <div className='flex items-center w-[220px] gap-2 justify-end'>
+            <div className='relative mr-2'>
               <div onClick={(e) =>{
               dispatch(showLanguage())
               e.stopPropagation()
               } } className='cursor-pointer justify-center items-center space-y-0 leading-none '>
               <span className='flex justify-center items-center font-bold'><Globe width={18}/></span>
-              <span className='text-[14px]'>English</span>
+              <span className='text-[14px]'>{selectedLanguage?.label}</span>
               </div>
            {languageIsVisible && 
             <motion.div
@@ -133,19 +143,23 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
              className='flex-col w-[170px] justify-center absolute top-[50px] left-[-62px]
             items-center shadow-carousel-language py-2 px-4 rounded-[15px] bg-white'>
-              <div className='border-b-[1px] border-[#EAEAEA] hover:text-[#999] cursor-pointer  py-2 my-2'>English</div>
-              <div className='border-b-[1px] border-[#EAEAEA] hover:text-[#999] cursor-pointer py-2 my-2'>Русский</div>
-              <div className='border-b-[1px] border-[#EAEAEA] hover:text-[#999] cursor-pointer py-2 my-2'>O'zbekcha</div>
-              <div className='border-b-[1px] border-[#EAEAEA] hover:text-[#999] cursor-pointer py-2 my-2'> Kazakh</div>       
+              {supportedLanguages.map((lang) => (
+                <div
+                  key={lang.code}
+                  onClick={() => handleLanguageSelect(lang.code)}
+                  className='border-b-[1px] border-[#EAEAEA] hover:text-[#999] cursor-pointer py-2 my-2 w-full text-center'>
+                  {lang.label}
+                </div>
+              ))}
             </motion.div>
            }
            
             </div>
 
-            <div onClick={getProfile} className='w-[90px] h-[42px] rounded-[15px] bg-[#EAEAEA] text-center 
+            <div onClick={getProfile} className='h-[42px] rounded-[15px] px-2 bg-[#EAEAEA] text-center 
             flex justify-center items-center cursor-pointer'>
 
-           {user ? 'Profile' : 'Sign Up'}
+           {user ? t('profile') : t('signUp')}
 
             </div>
             {/* PROFILE */}

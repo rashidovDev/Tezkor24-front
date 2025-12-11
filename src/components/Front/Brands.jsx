@@ -15,7 +15,6 @@ const Brand = ({category}) => {
   const dispatch = useDispatch()
   const url = process.env.REACT_APP_IMAGE;
 
-  console.log("wdwd",brand)
   
   let currentUser;
 
@@ -30,6 +29,7 @@ const Brand = ({category}) => {
     const response = await GETBRAND(`/front/brand-list?sort=${category}`)
     setBrand(response.brands)
   }
+
 
   const doLikes = async (id) => {
     const token = localStorage.getItem("access_token")
@@ -78,7 +78,7 @@ const Brand = ({category}) => {
                 Array.isArray(brand) ? brand.map((item, idx) => {
                   return (
                     <div key={idx + 1} className='relative mb-2'>
-                       <div className='absolute bottom-[45px] right-0'>
+                       <div className='absolute bottom-[53px] md:right-0 right-1 '>
                        {item.likes.includes(user?.id) ? (
                                     <button
                                       onClick={(e) => {
@@ -112,6 +112,7 @@ const Brand = ({category}) => {
                               src={`${url}${item.image}`} alt="" />
                             {/* {item.logo && <img className='absolute top-[10px] right-[10px] cursor-pointer rounded-t-[20px] w-[60px]'
                          src={`https://tezkor24.onrender.com/${item.logo}`} alt="" />}   */}
+                         
                           </div>
                           <div className='mx-2'>
                             <div className=' pt-1'>
@@ -135,7 +136,11 @@ const Brand = ({category}) => {
                             <div className='flex items-center text-[#000]'>
                               <span>< Truck strokeWidth='3px' width={14} /></span> <span className='ml-1 text-[12px]'>{item.deliveryTime}min</span></div>
                             <div className=' pt-[5px] text-[#848484] flex items-center'>
-                              <div className='text-[#218A0A] bg-[#E7F2E4] max-w-max px-[8px] rounded-[15px] text-[12px]'>{item.deliveryFee && 'Free delivery'}</div>
+                              <div className='text-[#218A0A] bg-[#E7F2E4] max-w-max px-[8px] py-1 rounded-[15px] text-[12px]'>{item.deliveryFee ? `Delivery Fee: ${item.deliveryFee} sum` : 'Free delivery'}</div>
+                              {
+                                item.discount > 0 &&   <div className='text-white bg-[#F29314] py-1 max-w-max px-[8px] ml-2 rounded-[15px] text-[12px]'>{item.discount}% off</div>
+                              }
+                            
                             </div>
                           </div>
                         </div>
@@ -143,7 +148,7 @@ const Brand = ({category}) => {
                     </div>
 
                   )
-                }) : <div>Anvar</div>
+                }) : <div>Loading</div>
               }
             </div>
           ) :

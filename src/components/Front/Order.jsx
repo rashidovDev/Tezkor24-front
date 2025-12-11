@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart, clearBasket, removeItemFromCart, setOrder } from '../../store/slices/basketSlice';
 import { Minus, Plus } from 'react-feather';
-import { PGET, POST } from '../../api/frontApi';
+import { GET, PGET, POST } from '../../api/frontApi';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import { hideModal, showModal } from '../../store/slices/modalSlice';
@@ -25,6 +25,7 @@ const Order = () => {
   let regionID = 14
 
   const [paymentMethod, setPaymentMethod] = useState('cash');
+  const [restaurantMeta, setRestaurantMeta] = useState({ discount: 0, deliveryFee: 0 });
   
   const location = {
     city,
@@ -45,6 +46,8 @@ const Order = () => {
   }
 
   const orders = useSelector(state => state.basket.order)
+  const brandID = useSelector(state => state.basket.brandID)
+
 
   async function createOrder() {
     const response = await POST('/order', {orders})
@@ -56,8 +59,6 @@ const Order = () => {
   const [isChecked, setIsChecked] = useState(false);
 
   // Function to handle checkbox change
-
-
 
   const getData = () => {
     getDistrict()
@@ -74,6 +75,33 @@ const Order = () => {
 
   const orderItem = useSelector(state => state.basket.items)
   const totalPrice = useSelector(state => state.basket.totalAmount)
+    console.log("ORders:", orderItem)
+
+  useEffect(() => {
+    const fetchRestaurantMeta = async () => {
+      if (!brandID) {
+        setRestaurantMeta({ discount: 0, deliveryFee: 0 })
+        return
+      }
+      try {
+        const response = await GET(`/front/brand/${brandID}`)
+        setRestaurantMeta({
+          discount: response.discount || 0,
+          deliveryFee: response.deliveryFee || 0
+        })
+      } catch (err) {
+        console.error('Failed to load restaurant info', err)
+        setRestaurantMeta({ discount: 0, deliveryFee: 0 })
+      }
+    }
+    fetchRestaurantMeta()
+  }, [brandID])
+
+  const subtotal = totalPrice || 0
+  const discountRate = restaurantMeta.discount || 0
+  const discountAmount = subtotal * (discountRate / 100)
+  const deliveryFee = restaurantMeta.deliveryFee || 0
+  const finalTotal = Math.max(subtotal - discountAmount + deliveryFee, 0)
 
   const { register, handleSubmit, formState: { errors }, setValue } = useForm({});
   return (
@@ -213,16 +241,45 @@ dispatch(clearBasket())
               <TableCell align="center"> <div className='text-[16px]'>{order.totalPrice}</div> </TableCell>
             </TableRow>
           ))}
-          <TableRow
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
+          <TableRow>
             <TableCell component="th" scope="row">
-              <div className='text-[16px] font-bold'>Total</div>
+              <div className='text-[16px] font-semibold'>Subtotal</div>
             </TableCell>
             <TableCell align="center"></TableCell>
             <TableCell align="center"></TableCell>
             <TableCell align="center"></TableCell>
-            <TableCell align="center"><div className='text-[16px] font-bold'>{totalPrice}</div></TableCell>
+            <TableCell align="center"><div className='text-[16px] font-bold'>{subtotal}</div></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th" scope="row">
+              <div className='text-[16px] font-semibold'>Discount</div>
+            </TableCell>
+            <TableCell align="center"><div className='text-[16px]'>{discountRate}%</div></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"><div className='text-[16px] font-bold'>-{discountAmount}</div></TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th" scope="row">
+              <div className='text-[16px] font-semibold'>Delivery fee</div>
+            </TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center">
+              <div className='text-[16px] font-bold'>
+                {deliveryFee > 0 ? `+${deliveryFee}` : 'Free delivery'}
+              </div>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell component="th" scope="row">
+              <div className='text-[20px] font-bold'>Total</div>
+            </TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center"><div className='text-[18px] font-bold'>{finalTotal}</div></TableCell>
           </TableRow>
         </TableBody>
       </Table>
@@ -240,7 +297,6 @@ dispatch(clearBasket())
   </div>
 </div>
     </>
-    
   )
 }
 
