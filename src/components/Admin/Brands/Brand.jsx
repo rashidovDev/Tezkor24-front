@@ -29,11 +29,13 @@ const Brand = () => {
     setPageCount(Math.ceil(response.totalItems / perPage))
   }
 
+  console.log("BRANDS", brand)
+
   const handlePageClick = (selectedPage) => {
     setPage(selectedPage.selected + 1);
   };
 
-  
+   
 
   async function deleteItem(id) {
     await DELETE('/brand/' + id)

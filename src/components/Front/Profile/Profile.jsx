@@ -43,7 +43,7 @@ const Profile = () => {
 
 
   return (
-    <div className='md:w-[90%] mt-3 mx-auto'>
+    <div className='md:w-[95%] mt-3 mx-auto'>
           <NavLink to="/" className="no-underline   ">
               <button className='flex justify-start items-center  text-[#8E8E93]'><ChevronLeft size={17} /> <span className='mb-[1px]'>Back</span></button>
             </NavLink>
