@@ -14,8 +14,8 @@ const Brand = ({category}) => {
   const [user, setUser] = useState()
   const dispatch = useDispatch()
   const url = process.env.REACT_APP_IMAGE;
-
-  
+const baseURL = process.env.REACT_APP_SERVER_API;
+    console.log("BASEURL", baseURL)
   let currentUser;
 
   async function getUser() {
