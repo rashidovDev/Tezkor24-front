@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Globe, Navigation, Search } from 'react-feather'
+import { Globe, Navigation, Search, ShoppingBag, ShoppingCart } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, NavLink } from "react-router-dom";
 import { showModalRegistration } from '../../store/slices/modalSlice';
@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { setLanguage } from '../../store/slices/languageSlice';
 import useTranslation from '../../hooks/useTranslation';
 import { supportedLanguages } from '../../locales/translations';
+import { showBasket } from '../../store/slices/basketSlice';
 
 
 const Navbar = () => {
@@ -22,7 +23,7 @@ const Navbar = () => {
 
   const languageIsVisible = useSelector(state => state.toggle.languageIsVisible)
   const deliverIsVisible = useSelector(state => state.toggle.deliverIsVisible)
-
+ const totalQuantity = useSelector(state => state.basket.totalQuantity)
   let currentUser;
 
 
@@ -127,6 +128,7 @@ const Navbar = () => {
 
           {/* RIGHT SIDE */}
           <div className='flex items-center w-[220px] gap-2 justify-end'>
+
             <div className='relative mr-2'>
               <div onClick={(e) =>{
               dispatch(showLanguage())
@@ -154,6 +156,19 @@ const Navbar = () => {
             </motion.div>
            }
            
+            </div>
+
+            <div onClick={(e) => {
+              e.stopPropagation()
+dispatch(showBasket())
+            } } className='mr-2 cursor-pointer relative'>
+              {
+              totalQuantity >0 &&
+              <span className='absolute text-[7px] w-[14px] h-[14px] bg-[#F29314] flex 
+              justify-center text-white items-center -right-1
+               p-1 rounded-full'>{totalQuantity ? totalQuantity : ''}</span>
+              }
+            <ShoppingCart/>
             </div>
 
             <div onClick={getProfile} className='h-[42px] rounded-[15px] px-2 bg-[#EAEAEA] text-center 
