@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -57,10 +56,6 @@ const Order = () => {
     }
   }
 
-  const [isChecked, setIsChecked] = useState(false);
-
-  // Function to handle checkbox change
-
   const getData = () => {
     getDistrict()
   }
@@ -107,7 +102,6 @@ const Order = () => {
   const deliveryFee = restaurantMeta.deliveryFee || 0
   const finalTotal = Math.max(subtotal - discountAmount + deliveryFee, 0)
 
-  const { register, handleSubmit, formState: { errors }, setValue } = useForm({});
   return (
     <>
 <Modal>

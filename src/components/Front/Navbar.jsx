@@ -17,8 +17,6 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [search, setSearch] = useState()
   const [user, setUser] = useState()
-  const [profile, setProfile] = useState(false)
-  const [searchError, setSearchError] = useState(false)
   const { t, currentLanguage } = useTranslation()
 
 
@@ -44,15 +42,6 @@ const Navbar = () => {
 
   const dispatch = useDispatch()
   const selectedLanguage = supportedLanguages.find((lang) => lang.code === currentLanguage)
-
-  const errorHandler = () => {
-    if (search.length < 3) {
-      setSearchError(true)
-      setTimeout(() => {
-        setSearchError(false)
-      }, 3000)
-    }
-  }
 
   const getProfile = async () => {
     const token = localStorage.getItem("access_token")
@@ -97,7 +86,6 @@ const Navbar = () => {
 
                 <NavLink to={`/search/${search}`} className='no-underline cursor-pointer text-[#fff]'>
                   <button
-                    onClick={() => errorHandler()}
                     disabled={!search || search.length < 3}
                     className='w-[90px] h-[42px] main-bg rounded-r-[15px] text-center cursor-pointer'>{t('searchButton')}</button>
                 </NavLink>

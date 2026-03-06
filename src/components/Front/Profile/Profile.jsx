@@ -16,6 +16,9 @@ const Settings = lazy(() => import("./ProfileCategories/Settings"));
 const Profile = () => {
   const [selectedCategory, setSelectedCategory] = useState('Profile')
 
+  // const categories = ['Profile', 'Orders', 'Saved Restaurants', 'Notification', 'Reviews', 'Settings']
+
+  // const user = JSON.parse(localStorage.getItem('user'))
 
     const renderComponent = () => {
       switch (selectedCategory) {

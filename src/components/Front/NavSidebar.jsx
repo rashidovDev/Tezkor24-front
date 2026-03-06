@@ -1,16 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion';
-import { useDispatch, useSelector } from 'react-redux';
 import { Instagram } from 'react-feather';
 import { NavLink } from 'react-router-dom';
 import { BiLogoTelegram } from 'react-icons/bi';
 import { FaLinkedin } from 'react-icons/fa';
 
 const NavSidebar = ({setIsOpen, isOpen}) => {
-
-  const dispatch = useDispatch()
-  const isNavSideBarIsVisible = useSelector(state => state.modal.navbar)
-
  
   const circleVariants = {
     hidden: {
@@ -78,10 +73,10 @@ const NavSidebar = ({setIsOpen, isOpen}) => {
       <NavLink to={"/"} onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px] text-[#fff]'>Restaurants</NavLink>
       <NavLink to={"/"} onClick={() => setIsOpen(false)} className='no-underline my-2 text-[20px] text-[#fff]'>Back</NavLink>
       <div className='flex items-center absolute bottom-10'>
-            <a ><Instagram className="mr-2" color='#fff' size={20} /></a>
-            <a><BiLogoTelegram size={20} className='mr-1' color='#fff'/></a>
-            <a className='px-2  pr-1 list-none'><FaLinkedin className='mr-1' size={20} color='#fff'/></a>
-            <a className='no-underline text-[#fff] text-[20px]'>©2024 Tezkor24</a>
+            <span><Instagram className="mr-2" color='#fff' size={20} /></span>
+            <span><BiLogoTelegram size={20} className='mr-1' color='#fff'/></span>
+            <span className='px-2  pr-1 list-none'><FaLinkedin className='mr-1' size={20} color='#fff'/></span>
+            <span className='no-underline text-[#fff] text-[20px]'>©2024 Tezkor24</span>
           </div>
       {/* <Socials /> */}
     </motion.div>
