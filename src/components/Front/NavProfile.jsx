@@ -7,7 +7,6 @@ import { X } from 'react-feather';
 
 const NavProfile = ({setUser, user}) => {
   const isProfile = useSelector(state => state.user.profile)
-  const basketIsVisible = useSelector(state => state.basket.navBasketIsVisible)
   let currentUser;
   async function getUser() {
 		currentUser = JSON.parse(localStorage.getItem("user"))

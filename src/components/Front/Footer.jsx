@@ -19,10 +19,10 @@ const Footer = () => {
             <p className='md:hidden text-center'>©2023 Tezkor24 All rights reserved</p>
           </div>
           <div className='hidden md:flex items-center'>
-            <a><Instagram className="mr-2" size={16} /></a>
-            <a><BiLogoTelegram/></a>
-            <a className='px-2 pr-1 list-none'><FaLinkedin/></a>
-            <a>©2024 Tezkor24</a>
+            <span><Instagram className="mr-2" size={16} /></span>
+            <span><BiLogoTelegram/></span>
+            <span className='px-2 pr-1 list-none'><FaLinkedin/></span>
+            <span>©2024 Tezkor24</span>
           </div>
          </div>
         </div>

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { showModalRegistration} from '../../store/slices/modalSlice';
 import NavProfile from './NavProfile';
 import { showProfile } from '../../store/slices/userSlice';
@@ -12,9 +12,7 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
 
   const [search, setSearch] = useState()
   const [user, setUser] = useState()
-  const [searchError, setSearchError] = useState(false)
   let currentUser;
-  const navigate = useNavigate()
   const { t } = useTranslation()
 
   async function getUser() {
@@ -33,14 +31,6 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
         } else {
          dispatch(showProfile())
         }
-    }
-
-    const errorHandler = () => {
-      if (search.length < 3) {
-        setTimeout(() => {
-          setSearchError(false)
-        }, 3000)
-      }
     }
 
   // const circleVariants = {
@@ -68,7 +58,6 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
   // };
 
   const dispatch = useDispatch()
-  const totalQuantity = useSelector(state => state.basket.totalQuantity)
 
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -119,7 +108,6 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
                 <div className='w-[25%]'>
                   <NavLink to={`/search/${search}`} className='no-underline cursor-pointer text-[#fff] w-full'>  
                   <div
-                       onClick={() => errorHandler()}
                        disabled={!search || search.length < 3}
                     className='ml-2 py-[10px] px-[12px] text-[#fff] text-center cursor-pointer font-bold rounded-[12px] main-bg'>
                     {t('searchButton')}  </div></NavLink>

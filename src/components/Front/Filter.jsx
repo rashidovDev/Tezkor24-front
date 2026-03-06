@@ -7,7 +7,6 @@ import { hideFilter, showFilter } from '../../store/slices/toggleSlice';
 
 const Filter = ({setCategory}) => {
 
-const [animate, setAnimate] = useState(true); 
 const [selectedCategory, setSelectedCategory] = useState('All')
  const [label, setLabel] = useState('I trust you')
   const ball = {
@@ -26,7 +25,6 @@ const dispatch = useDispatch()
 
   const handleButtonClick = (label) => {
     setLabel(label)
-    setAnimate(false);
 };
 
 const handleCategory = (category) => {
@@ -69,11 +67,11 @@ const handleCategory = (category) => {
                             <div key={idx + 1} onClick={() => handleButtonClick(item)}
                                 className='py-2 my-2 px-1 rounded-[5px] w-full flex  items-center '>
                                 <div className={`w-[24px] h-[24px] 
-                                ${label == item  ?  'bg-[#F29314] ' : 'bg-[#EAEAEA]'}  duration-300 transition-all rounded-full flex 
+                                ${label === item  ?  'bg-[#F29314] ' : 'bg-[#EAEAEA]'}  duration-300 transition-all rounded-full flex 
                                 justify-center items-center`}>
                                     <motion.div      
                                         style={ball}
-                                        animate={label == item ? { opacity: 0.5, scale: 0.5 } : { opacity: 1, scale: 0 }}
+                                    animate={label === item ? { opacity: 0.5, scale: 0.5 } : { opacity: 1, scale: 0 }}
                                         initial={{ opacity: 1, scale: 0 }}
                                         transition={{
                                             duration: 0.8,
