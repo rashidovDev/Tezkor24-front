@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {  GETBRAND, PUT } from '../../api/frontApi'
 import { Star, Truck } from 'react-feather'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { showModalRegistration } from '../../store/slices/modalSlice';
 import Skeleton from '../Skeleton/Skeleton';
@@ -14,8 +14,7 @@ const Brand = ({category}) => {
   const [user, setUser] = useState()
   const dispatch = useDispatch()
   const url = process.env.REACT_APP_IMAGE;
-const baseURL = process.env.REACT_APP_SERVER_API;
-    console.log("BASEURL", baseURL)
+
   let currentUser;
 
   async function getUser() {

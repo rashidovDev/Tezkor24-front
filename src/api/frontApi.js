@@ -1,4 +1,3 @@
-import { setUser } from '../store/slices/userSlice';
 import axios from "axios"
 import {store} from "../store"
 import { toast } from 'react-toastify';

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ChevronLeft, Trash2} from 'react-feather'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { checkToken, PUT } from '../../../../api/frontApi'
 
 const FavouriteBrands = () => {

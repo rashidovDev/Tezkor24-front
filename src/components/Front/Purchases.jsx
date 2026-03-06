@@ -8,9 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import ReactPaginate from 'react-paginate';
 import { checkToken, GET } from '../../api/frontApi';
-import { NavLink } from 'react-router-dom';
-import { ChevronLeft } from 'react-feather';
-import { navigateTo } from '../../utils/navigation';
 
 const Purchases = () => {
 

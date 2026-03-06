@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {hideModal, hideModalExactBrand} from "../../store/slices/modalSlice"
+import { hideModalExactBrand} from "../../store/slices/modalSlice"
 import { motion } from 'framer-motion'
 
 const ModalCustom = (props) => {

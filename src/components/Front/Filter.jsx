@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 import { FaSort } from "react-icons/fa";
 import Modalview from  '../Modal/Modal-view';
 import * as motion from "motion/react-client"
-import zIndex from '@mui/material/styles/zIndex';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideFilter, showFilter } from '../../store/slices/toggleSlice';
-import { showModalView } from '../../store/slices/modalSlice';
 
 const Filter = ({setCategory}) => {
 

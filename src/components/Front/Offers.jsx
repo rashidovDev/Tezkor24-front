@@ -2,10 +2,8 @@ import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
 import "../../css/carousel.css"
-import { div } from "motion/react-client";
 import { useEffect, useState } from "react";
-import { GET, GETBRAND } from "../../api/frontApi";
-import { motion } from "framer-motion"
+import { GET } from "../../api/frontApi";
 
 const Carousel = (props) => {
 

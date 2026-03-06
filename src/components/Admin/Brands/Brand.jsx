@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { CheckCircle, Edit3, Search, XCircle, Folder, PlusCircle, Trash2, Users, User as Userr, UserX, Save, ShoppingBag, Plus, X } from 'react-feather';
-import { DELETE, FILE, GET, UpdateStatus } from '../../../api/adminApi';
+import { CheckCircle, Edit3, Search, XCircle, PlusCircle, Trash2, Save, ShoppingBag } from 'react-feather';
+import { DELETE, GET, UpdateStatus } from '../../../api/adminApi';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { hideModal, showModal } from '../../../store/slices/modalSlice';
 import Modal from '../../Modal/Modal';
 

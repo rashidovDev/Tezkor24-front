@@ -3,7 +3,6 @@ import { GET } from '../../api/frontApi'
 import ReactPaginate from 'react-paginate';
 import {useDispatch} from "react-redux"
 import { addItemToCart } from '../../store/slices/basketSlice';
-import Basket from './Basket';
 
 const Products = () => {
     const [category, setCategory] = useState("")

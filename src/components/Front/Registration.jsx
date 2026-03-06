@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { DELETEFILE, FILE, GET, POST, PUT, login } from '../../api/frontApi'
-import { XCircle, Save, Edit, User } from 'react-feather';
-import { Link, Navigate, NavLink, useNavigate, useParams } from 'react-router-dom';
+import { XCircle, Save, Edit } from 'react-feather';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Modal from "../Modal/Modal"
 import axios from "axios"

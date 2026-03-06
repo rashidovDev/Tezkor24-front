@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Globe, Navigation, Search, ShoppingBag, ShoppingCart } from 'react-feather'
+import { Globe, Navigation, Search, ShoppingCart } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, NavLink } from "react-router-dom";
 import { showModalRegistration } from '../../store/slices/modalSlice';

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import {Delete, Trash2, Trash, ShoppingBag, Plus, Minus} from 'react-feather'
+import React from 'react'
+import { Trash2, ShoppingBag, Plus, Minus} from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart, deleteBrandID, deleteItem, hideBasket, removeItemFromCart, showBasket } from '../../store/slices/basketSlice'
-import { showModal, showModalRegistration } from '../../store/slices/modalSlice'
-import Modal from '../Modal/Modal'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { checkToken } from '../../api/frontApi'
+import { showModalRegistration } from '../../store/slices/modalSlice'
+import { useNavigate } from 'react-router-dom'
 
 
 const Basket = () => {

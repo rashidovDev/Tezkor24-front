@@ -1,11 +1,10 @@
-import React from 'react'
+
 import { useDispatch, useSelector } from 'react-redux'
-import { addItemToCart, deleteBrandID, deleteItem, hideBasket, hideNavBasket, removeItemFromCart } from '../../store/slices/basketSlice'
-import { Minus, Plus, ShoppingBag, Trash } from 'react-feather'
+import { addItemToCart, deleteBrandID, deleteItem, hideNavBasket, removeItemFromCart } from '../../store/slices/basketSlice'
+import { Minus, Plus, ShoppingBag } from 'react-feather'
 import { FaTrash } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { showModalRegistration } from '../../store/slices/modalSlice'
-import { checkToken } from '../../api/frontApi'
 
 
 const BasketNav = () => {

@@ -1,5 +1,3 @@
-import { useState } from "react"
-import {UserData} from "./data"
 import {Pie} from "react-chartjs-2"
 
 const PieChart = () => {

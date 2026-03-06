@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import  { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {hideModalRegistration} from "../../store/slices/modalSlice"
 import { useForm } from 'react-hook-form'

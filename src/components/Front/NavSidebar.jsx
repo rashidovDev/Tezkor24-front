@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { Instagram, Menu } from 'react-feather';
-import { hideNavbar, showNavbar } from '../../store/slices/modalSlice';
+import { Instagram } from 'react-feather';
 import { NavLink } from 'react-router-dom';
 import { BiLogoTelegram } from 'react-icons/bi';
 import { FaLinkedin } from 'react-icons/fa';

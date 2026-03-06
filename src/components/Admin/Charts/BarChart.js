@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import {Bar, Line} from "react-chartjs-2"
-import {UserData} from "./data"
+import {Bar} from "react-chartjs-2"
 
 const BarChart = () => {
 

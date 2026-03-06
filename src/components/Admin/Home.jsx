@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import BarChart from './Charts/BarChart'
-import {Chart as ChartJS} from "chart.js/auto"
-import Line from './Charts/LineChart'
 import PieChart from './Charts/PieChart'
 import { BarChart2, DollarSign, ShoppingBag, Truck, UserPlus } from 'react-feather'
-import { FcStatistics } from "react-icons/fc";
 import Clock from './Clock'
-import { FaList } from 'react-icons/fa'
 import { GET } from '../../api/adminApi'
-import Chart from './Chart'
 import LineChart from './Charts/LineChart'
 import AreaChart from './Charts/AreaChart'
 

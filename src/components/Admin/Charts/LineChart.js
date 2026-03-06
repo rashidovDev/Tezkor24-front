@@ -1,5 +1,4 @@
 import { useState } from "react"
-import {UserData} from "./data"
 import {Line} from "react-chartjs-2"
 
 const LineChart = () => {

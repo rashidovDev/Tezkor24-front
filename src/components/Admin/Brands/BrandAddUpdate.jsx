@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { DELETEFILE, FILE, GET, POST, PUT } from '../../../api/adminApi'
-import { XCircle, Save, Edit, User, Image, Delete, X, Trash, PlusCircle, ShoppingBag, Plus, Home, Trash2, Edit2, Edit3, CheckCircle } from 'react-feather';
-import { Link, Navigate, NavLink, useNavigate, useParams } from 'react-router-dom';
+import { XCircle, Save, Home, Trash2, Edit3 } from 'react-feather';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Modal from "../../Modal/Modal"
-import { useDispatch, useSelector } from 'react-redux'
-import { hideModal, hideModalDouble, showModal, showModalDouble } from '../../../store/slices/modalSlice';
-import { getId } from '../../../store/slices/idSlice';
-import { FaUserCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux'
+import { hideModal, hideModalDouble, showModal } from '../../../store/slices/modalSlice';
 import ModalDouble from '../../Modal/ModalDouble';
 
 const ProductAddUpdate = () => {

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Eye, EyeOff, PlayCircle } from 'react-feather';
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 import { login } from './api/adminApi'
-import { store } from './store';
 import { setUser } from './store/slices/userSlice';
-import { hideLoader, showLoader } from './store/slices/loaderSlice';
 
 const Login = () => {
     const [email, setEmail] = useState('')

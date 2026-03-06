@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {hideModal, hideModalDouble} from "../../store/slices/modalSlice"
+import { hideModalDouble} from "../../store/slices/modalSlice"
 
 
 const ModalDouble = (props) => {

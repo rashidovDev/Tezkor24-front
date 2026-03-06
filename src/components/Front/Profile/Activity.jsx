@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { checkToken, GET } from '../../../api/frontApi'
 
 const Activity = () => {

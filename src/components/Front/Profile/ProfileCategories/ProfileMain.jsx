@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { User } from 'react-feather'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logoutUser } from '../../../../store/slices/userSlice'
 import { useNavigate } from 'react-router-dom'
 

@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
-import { NavLink } from "react-router-dom";
-import { CheckCircle, Edit3, Search, XCircle, Folder, PlusCircle, Trash2, Users, User as Userr, UserX } from 'react-feather';
-import { DELETE, GET, PUT, UpdateStatus } from '../../../api/adminApi';
+import { CheckCircle, Search, XCircle, Trash2 } from 'react-feather';
+import { DELETE, GET, PUT } from '../../../api/adminApi';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useSelector } from 'react-redux';
 import { FaList } from "react-icons/fa";
 
 const Product = () => {

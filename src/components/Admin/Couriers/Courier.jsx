@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
-import { NavLink, useNavigate } from "react-router-dom";
-import { CheckCircle, Edit3, Search, XCircle, Folder, PlusCircle, Trash2, Users, User as Userr, UserX } from 'react-feather';
-import { checkToken, DELETE, GET } from '../../../api/adminApi';
+import { NavLink } from "react-router-dom";
+import { Edit3, Search, PlusCircle, Trash2, Users } from 'react-feather';
+import { DELETE, GET } from '../../../api/adminApi';
 import { useState } from 'react';
 import ReactPaginate from 'react-paginate';
-import { useSelector } from 'react-redux';
-import { BiUserCircle } from 'react-icons/bi';
 
 const Courier = () => {
 

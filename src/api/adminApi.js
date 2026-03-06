@@ -1,10 +1,8 @@
-import { setUser } from '../store/slices/userSlice';
+
 import axios from "axios"
 import {store} from "../store"
 import { toast } from 'react-toastify';
 import { hideLoader, showLoader } from '../store/slices/loaderSlice';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { navigateTo } from '../utils/navigation';
 
 const baseURL = process.env.REACT_APP_SERVER_API;
 
