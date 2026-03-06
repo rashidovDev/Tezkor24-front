@@ -16,18 +16,18 @@ const Purchases = () => {
     const [page, setPage] = useState(0);
     const perPage = 4;
 
-    async function getItems() {
-        await checkToken()
-        const response = await GET(`/front/purchase-user?page=${page}&limit=${perPage}`)
-        setProduct(response.paginatedItems)
-        setPageCount(Math.ceil(response.totalItems / perPage))
-    }
-
     const handlePageClick = (selectedPage) => {
         setPage(selectedPage.selected + 1);
     };
 
     useEffect(() => {
+        const getItems = async () => {
+            await checkToken()
+            const response = await GET(`/front/purchase-user?page=${page}&limit=${perPage}`)
+            setProduct(response.paginatedItems)
+            setPageCount(Math.ceil(response.totalItems / perPage))
+        }
+
         getItems()
     }, [page])
 
