@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -68,6 +69,10 @@ const NavMobile = ({ setIsOpen, isOpen }) => {
 
   const dispatch = useDispatch()
   const totalQuantity = useSelector(state => state.basket.totalQuantity)
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
 
   useEffect(() => {

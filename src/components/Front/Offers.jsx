@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { NavLink } from 'react-router-dom';
@@ -88,6 +89,9 @@ const Carousel = (props) => {
          function getData() {
             getBrands()
           }
+        
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+
         
           useEffect(() => {
             getData()

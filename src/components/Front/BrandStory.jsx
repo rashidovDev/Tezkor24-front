@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import {  ChevronLeft, Minus, Plus,  Search } from 'react-feather'
 import { BsInfoLg } from "react-icons/bs";
@@ -91,6 +92,9 @@ const BrandStory = () => {
   const orders = useSelector(state => state.basket.items)
   const totalQuantity = useSelector(state => state.basket.totalQuantity)
   const productID = useSelector(state => state.basket.productID)
+ 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
  
   useEffect(() => {
     getData()

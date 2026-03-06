@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Table from '@mui/material/Table';
@@ -63,6 +64,9 @@ const Order = () => {
   const getData = () => {
     getDistrict()
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
      getData()

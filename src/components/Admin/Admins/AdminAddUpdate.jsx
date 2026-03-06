@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { GET, POST, PUT } from '../../../api/adminApi'
 import { XCircle, Save } from 'react-feather';
@@ -46,6 +47,9 @@ const AdminAddUpdate = () => {
       await getUser()
     }
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getData()

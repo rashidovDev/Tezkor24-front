@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -22,6 +23,9 @@ const NavProfile = ({setUser, user}) => {
     setUser('')
 		navigate("/")
 	}
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getUser()

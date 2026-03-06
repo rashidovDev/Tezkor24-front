@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { ChevronLeft, Trash2} from 'react-feather'
@@ -26,6 +27,9 @@ const FavouriteBrands = () => {
     {headers : {Authorization : `Bearer ` + localStorage.getItem('access_token')}})
     setBrand(response.data.likedRestaurants)
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
     useEffect(() => {
         getFavouriteBrands()

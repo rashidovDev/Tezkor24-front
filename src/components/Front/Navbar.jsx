@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { Globe, Navigation, Search, ShoppingCart } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,6 +34,9 @@ const Navbar = () => {
       setUser(currentUser.data.user)
     }
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getUser()

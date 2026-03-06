@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { GET } from '../../../api/frontApi'
 import { NavLink } from 'react-router-dom';
@@ -16,6 +17,9 @@ const Offers = () => {
            function getData() {
               getBrands()
             }
+          
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+
           
             useEffect(() => {
               getData()

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import { Edit3, Search, XCircle, PlusCircle, Trash2, Star } from 'react-feather';
@@ -55,6 +56,9 @@ const FavouriteFood = () => {
     await PUT('/product/favourite/' + prod)
     getItems()
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getItems()

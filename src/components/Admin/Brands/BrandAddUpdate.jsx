@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import { DELETEFILE, FILE, GET, POST, PUT } from '../../../api/adminApi'
 import { XCircle, Save, Home, Trash2, Edit3 } from 'react-feather';
@@ -115,6 +116,10 @@ const ProductAddUpdate = () => {
   //   const response = await GET(`/category/category-list`)
   //   setBrandCat(response)
   // }
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
 
   useEffect(() => {

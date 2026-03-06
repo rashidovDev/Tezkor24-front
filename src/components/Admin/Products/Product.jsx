@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { NavLink, useParams } from "react-router-dom";
 import { Edit3, Search, PlusCircle, Trash2, Users } from 'react-feather';
@@ -28,6 +29,9 @@ async function deleteItem(id) {
   await DELETE('/product/' + id)
   getItems()
 }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
         getItems()

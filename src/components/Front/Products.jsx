@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import { GET } from '../../api/frontApi'
 import ReactPaginate from 'react-paginate';
@@ -38,6 +39,9 @@ const Products = () => {
     const addProduct = (product) => {
        dispatch(addItemToCart(product))
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
     useEffect(() => {
         getItems()

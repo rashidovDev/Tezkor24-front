@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { NavLink } from "react-router-dom";
 import { Search, PlusCircle, User } from 'react-feather';
@@ -73,6 +74,10 @@ const Category = () => {
 // }
 
 const dispatch = useDispatch()
+
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
 
   useEffect(() => {

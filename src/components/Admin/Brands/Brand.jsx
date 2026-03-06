@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CheckCircle, Edit3, Search, XCircle, PlusCircle, Trash2, Save, ShoppingBag } from 'react-feather';
@@ -48,6 +49,9 @@ const Brand = () => {
   }
 
   const dispatch = useDispatch()
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getItems()

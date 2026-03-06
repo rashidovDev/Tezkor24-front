@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import {  NavLink, } from "react-router-dom";
 import { Search, XCircle, PlusCircle, User as Star } from 'react-feather';
@@ -56,6 +57,9 @@ const Offer = () => {
     await UpdateStatus('/brand/add-offers/' + id)
     getItems()
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getItems()

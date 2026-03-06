@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import {  GETBRAND, PUT } from '../../api/frontApi'
 import { Star, Truck } from 'react-feather'
@@ -60,6 +61,9 @@ const Brand = ({category}) => {
     getUser()
     getBrands()
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
     getData()

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { CheckCircle, Search, XCircle, Trash2 } from 'react-feather';
 import { DELETE, GET, PUT } from '../../../api/adminApi';
@@ -35,6 +36,9 @@ const Product = () => {
     // setStatus(data.status)
     getItems()
   }
+ 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
  
   useEffect(() => {
     getItems()

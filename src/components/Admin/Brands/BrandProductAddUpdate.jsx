@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react'
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { Save, ArrowLeft } from 'react-feather';
@@ -67,6 +68,9 @@ const BrandProductAdd = () => {
   }
 
   const dispatch = useDispatch()
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   useEffect(() => {
   getData()
