@@ -11,17 +11,15 @@ const SearchBrand = () => {
   const [selected, setSelected] = useState('restaurants')
   const { t } = useTranslation()
 
-  const getSearchItems = async () => {
-    const response = await GET(`/front/product-brand?search=` + search)
-    console.log(response)
-    setProducts(response.filteredProducts)
-    setBrands(response.filteredBrands)
-    console.log(products)
-  }
-
   const url = process.env.REACT_APP_IMAGE
 
   useEffect(() => {
+    const getSearchItems = async () => {
+      const response = await GET(`/front/product-brand?search=` + search)
+      setProducts(response.filteredProducts)
+      setBrands(response.filteredBrands)
+    }
+
     getSearchItems()
   }, [search])
 
