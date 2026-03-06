@@ -19,7 +19,6 @@ const SearchBrand = () => {
       setProducts(response.filteredProducts)
       setBrands(response.filteredBrands)
     }
-
     getSearchItems()
   }, [search])
 

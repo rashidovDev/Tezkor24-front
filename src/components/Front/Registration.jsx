@@ -11,7 +11,6 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const Registration = () => {
   const { id } = useParams()
-  const [user, setUser] = useState()
   const [file, setFile] = useState(null)
 
   const navigate = useNavigate()
@@ -60,31 +59,6 @@ const baseURL = process.env.REACT_APP_SERVER_API;
     }
  }
   
-  async function getCountries() {
-    const response = await GET('/country-helper')
-    setCountry(response)
-    getRegions()
-  }
-
-  async function getRegions() {
-    if(selectedCountry){}
-    const response = await GET(`/region-helper?country=${selectedCountry}`)
-    setRegion(response)
-  }
-
-  async function getUser(){
-    const currentUser = JSON.parse(localStorage.getItem("admin_user"))
-      setUser(currentUser.data.user)
-  }
-
-  async function getUser() {
-    const response = await GET('/auth/users/' + id)
-    for (let key in response) {
-      setValue(`${key}`, response[key])
-    }
-    setImageUrl(response.avatar)
-  }
-
 
   async function createUser(data) {
     let response
@@ -111,18 +85,25 @@ const baseURL = process.env.REACT_APP_SERVER_API;
     // dispatch(hideModal())
   }
 
-  async function getData() {
-    getCountries()
-    getRegions()
-    if (id) {
-      await getUser()
-    }
-      
-  }
-
   useEffect(() => {
+    const getData = async () => {
+      const countriesResponse = await GET('/country-helper')
+      setCountry(countriesResponse)
+
+      const regionsResponse = await GET(`/region-helper?country=${selectedCountry}`)
+      setRegion(regionsResponse)
+
+      if (id) {
+        const userResponse = await GET('/auth/users/' + id)
+        for (let key in userResponse) {
+          setValue(`${key}`, userResponse[key])
+        }
+        setImageUrl(userResponse.avatar)
+      }
+    }
+
     getData()
-  }, [selectedCountry])
+  }, [selectedCountry, id, setValue])
 
   return (
     <>
